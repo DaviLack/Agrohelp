@@ -246,7 +246,7 @@
     <Component class="javax.swing.JButton" name="voltarButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Davi Lack\Documents\NetBeansProjects\Agrohelp\src\Imagem\voltar.png"/>
+          <Image iconType="2" name="C:\Users\Davi Lack\Documents\&#xc1;rea de Trabalho\USJT\PCO\Agrohelp\src\Imagem\voltar.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -268,7 +268,7 @@
     <Component class="javax.swing.JButton" name="loginButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Davi Lack\Documents\NetBeansProjects\Agrohelp\src\Imagem\login.png"/>
+          <Image iconType="2" name="C:\Users\Davi Lack\Documents\&#xc1;rea de Trabalho\USJT\PCO\Agrohelp\src\Imagem\login.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -365,7 +365,7 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Davi Lack\Documents\NetBeansProjects\Agrohelp\src\Imagem\background2.2.png"/>
+          <Image iconType="2" name="C:\Users\Davi Lack\Documents\&#xc1;rea de Trabalho\USJT\PCO\Agrohelp\src\Imagem\background2.2.png"/>
         </Property>
       </Properties>
       <Constraints>

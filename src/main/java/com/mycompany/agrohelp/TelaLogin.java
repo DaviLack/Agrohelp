@@ -81,7 +81,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(100, 340, 33, 16);
 
-        loginButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\NetBeansProjects\\Agrohelp\\src\\Imagem\\login.png")); // NOI18N
+        loginButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\login.png")); // NOI18N
         loginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 214, 196)));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +91,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(loginButton);
         loginButton.setBounds(100, 460, 300, 40);
 
-        cadastrarButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\NetBeansProjects\\Agrohelp\\src\\Imagem\\Cadastrar.png")); // NOI18N
+        cadastrarButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\Cadastrar.png")); // NOI18N
         cadastrarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 214, 196)));
         cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +101,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(cadastrarButton);
         cadastrarButton.setBounds(100, 510, 300, 40);
 
-        sairButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\NetBeansProjects\\Agrohelp\\src\\Imagem\\sair.png")); // NOI18N
+        sairButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\sair.png")); // NOI18N
         sairButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 214, 196)));
         sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +111,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(sairButton);
         sairButton.setBounds(100, 560, 300, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\NetBeansProjects\\Agrohelp\\src\\Imagem\\background2.1.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\background2.1.png")); // NOI18N
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 500, 700);
 
@@ -119,20 +119,11 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void senhaPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaPasswordFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_senhaPasswordFieldActionPerformed
 
     private void loginTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTextFieldActionPerformed
-        // TODO add your handling code here:
-        //pega o login do usuário
-        String login = loginTextField.getText();
-        //pega a senha do usuário como char[] e converte para String
-        String senha = new String (senhaPasswordField.getPassword());
-        //verifica se o usuário é válido
-        if (login.equals("admin") && senha.equals("admin"))
-            JOptionPane.showMessageDialog (null, "Bem vindo!");
-        else
-            JOptionPane.showMessageDialog(null, "Usuário inválido");
+        
     }//GEN-LAST:event_loginTextFieldActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
@@ -163,7 +154,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
             }
             else{
-                JOptionPane.showMessageDialog(null, "Usuário inválido");
+                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");
             }
         }
         catch(Exception e){
