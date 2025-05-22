@@ -81,7 +81,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(100, 340, 33, 16);
 
-        loginButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\login.png")); // NOI18N
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/login.png"))); // NOI18N
         loginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 214, 196)));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +91,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(loginButton);
         loginButton.setBounds(100, 460, 300, 40);
 
-        cadastrarButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\Cadastrar.png")); // NOI18N
+        cadastrarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Cadastrar.png"))); // NOI18N
         cadastrarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 214, 196)));
         cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +101,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(cadastrarButton);
         cadastrarButton.setBounds(100, 510, 300, 40);
 
-        sairButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\sair.png")); // NOI18N
+        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/sair.png"))); // NOI18N
         sairButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 214, 196)));
         sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +111,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(sairButton);
         sairButton.setBounds(100, 560, 300, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\background2.1.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/background2.1.png"))); // NOI18N
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 500, 700);
 

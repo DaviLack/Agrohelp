@@ -1,0 +1,105 @@
+CREATE DATABASE Agrohelp;
+use Agrohelp;
+CREATE TABLE usuario(idUsuario int auto_increment primary key, 
+email varchar(200), senha varchar(200), nomePerfil varchar(200), dataNascimento date,
+sexo char(1), CPF int, user varchar(200));
+
+CREATE TABLE planta (
+    idPlanta INT PRIMARY KEY AUTO_INCREMENT,
+    nomePlanta VARCHAR(200),
+    texturaSoloIdeial VARCHAR(200),
+    tempoIrrigacao INT,
+    tempoColheita INT,
+    condicaoColheita VARCHAR(200),
+    relevoIdeial VARCHAR(200),
+    climaIdeal VARCHAR(200),
+    estadoRecomendado VARCHAR(200)
+);
+
+INSERT INTO planta (
+    nomePlanta,
+    texturaSoloIdeial,
+    tempoIrrigacao,
+    tempoColheita,
+    condicaoColheita,
+    relevoIdeial,
+    climaIdeal,
+    estadoRecomendado
+) VALUES (
+    'Soja',
+    'Média a argilosa',
+    7, 
+    120,
+    'Grãos maduros com teor de umidade de 13% a 15%',
+    'Plano a levemente ondulado',
+    'Temperaturas entre 20°C e 30°C, sem geadas',
+    'MT, PR, GO, SP'
+),
+(
+    'Milho',
+    'Solo arenoso ou franco-argiloso',
+    10, -- Intervalo de irrigação recomendado (dias)
+    120, -- Tempo de colheita em dias
+    'Grãos secos e firmes, com a casca durificada',
+    'Plano',
+    'Temperaturas entre 18°C e 30°C, com boa radiação solar',
+    'MT, GO, MS, BA'
+),
+(
+    'Tomate',
+    'Solo leve e bem drenado, com pH de 6 a 6,8',
+    5, -- Intervalo de irrigação recomendado (dias)
+    90, -- Tempo de colheita em dias
+    'Frutos firmes e de cor vermelha intensa, com pouco defeito',
+    'Plano ou levemente ondulado',
+    'Temperaturas entre 18°C e 25°C, sem geadas',
+    'SP, MG, PR'
+);
+
+CREATE TABLE terreno (
+    idTerreno INT PRIMARY KEY AUTO_INCREMENT,
+    nomeTerreno VARCHAR(200),
+    areaTerreno DOUBLE,
+    textura VARCHAR(200),
+    relevoTerreno VARCHAR(200),
+    estadoTerreno VARCHAR(2),
+    climaTerreno VARCHAR(200),
+    idUsuario INT
+);
+
+INSERT INTO terreno (
+    nomeTerreno,
+    areaTerreno,
+    textura,
+    relevoTerreno,
+    estadoTerreno,
+    climaTerreno,
+    idUsuario
+) VALUES (
+    'Fazenda ABC',
+    250.5,
+    'Argiloso',
+    'Plano',
+    'SP',
+    'Tropical',
+    1
+),
+(
+    'Sítio Boa Esperança',
+    180.0,
+    'Franco-arenoso',
+    'Levemente ondulado',
+    'MG',
+    'Subtropical',
+    1
+),
+(
+    'Chácara Vale Verde',
+    320.75,
+    'Arenoso',
+    'Plano',
+    'GO',
+    'Tropical seco',
+    1
+);
+

@@ -1,9 +1,0 @@
-create database Agrohelp;
-use Agrohelp;
-create table usuario(idUsuario int auto_increment primary key, 
-email varchar(200), senha varchar(200), nomePerfil varchar(200), dataNascimento date,
-sexo char(1), CPF int, user varchar(200));
-
-insert into usuario (email, senha) values ('admin@admin.com', 'admin');
-
-select * from usuario;

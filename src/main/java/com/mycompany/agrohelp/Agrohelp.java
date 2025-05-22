@@ -1,6 +1,5 @@
 package com.mycompany.agrohelp;
 
-import javax.swing.SwingUtilities;
 
 public class Agrohelp {
 

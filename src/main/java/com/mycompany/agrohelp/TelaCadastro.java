@@ -133,7 +133,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(110, 260, 26, 16);
 
-        voltarButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\voltar.png")); // NOI18N
+        voltarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/sair.png"))); // NOI18N
         voltarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 214, 196)));
         voltarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +143,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         getContentPane().add(voltarButton);
         voltarButton.setBounds(110, 580, 280, 40);
 
-        loginButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\login.png")); // NOI18N
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/login.png"))); // NOI18N
         loginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 214, 196)));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,7 +182,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         getContentPane().add(senhaPasswordField);
         senhaPasswordField.setBounds(110, 460, 280, 30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Davi Lack\\Documents\\Área de Trabalho\\USJT\\PCO\\Agrohelp\\src\\Imagem\\background2.2.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/background2.2.png"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 520, 700);
 
