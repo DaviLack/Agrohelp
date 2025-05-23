@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package desingagrohelp;
+package com.mycompany.agrohelp;
 
 import javax.swing.JOptionPane;
 
@@ -41,7 +41,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(515, 738));
-        setPreferredSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(null);
 
         senhaPasswordField.setBackground(new java.awt.Color(214, 214, 196));
@@ -84,6 +83,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
         loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/login.png"))); // NOI18N
         loginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 214, 196)));
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(loginButton);
         loginButton.setBounds(100, 460, 300, 40);
 
@@ -115,20 +119,11 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void senhaPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaPasswordFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_senhaPasswordFieldActionPerformed
 
     private void loginTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTextFieldActionPerformed
-        // TODO add your handling code here:
-        //pega o login do usuário
-        String login = loginTextField.getText();
-        //pega a senha do usuário como char[] e converte para String
-        String senha = new String (senhaPasswordField.getPassword());
-        //verifica se o usuário é válido
-        if (login.equals("admin") && senha.equals("admin"))
-            JOptionPane.showMessageDialog (null, "Bem vindo!");
-        else
-            JOptionPane.showMessageDialog(null, "Usuário inválido");
+        
     }//GEN-LAST:event_loginTextFieldActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
@@ -142,6 +137,31 @@ public class TelaLogin extends javax.swing.JFrame {
         cadastro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cadastrarButtonActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        String login = loginTextField.getText();
+        String senha = new String(senhaPasswordField.getPassword());
+        
+        try{
+            Usuario usuario = new Usuario(login,senha);
+            DAO dao = new DAO();
+            if(dao.existe(usuario)){
+                dao.carregarDados(usuario);
+                JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.getNomePerfil() + "!");
+                DashboardTela dt = new DashboardTela();
+                dt.setVisible(true);
+                this.dispose();
+
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
