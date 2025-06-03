@@ -3,14 +3,20 @@ package com.mycompany.agrohelp;
 
 public class Usuario {
 
+    /**
+     * @return the idUsuario
+     */
+   
+
     
     private String nomePerfil;
     private String email;
     private String senha;
     private int dataNascimento;
     private char sexo;
-    private int CPF;
+    private long CPF;
     private String user;
+    private int idUsuario;
     
     /**
      * @return the nomePerfil
@@ -98,14 +104,14 @@ public class Usuario {
     /**
      * @return the CPF
      */
-    public int getCPF() {
+    public long getCPF() {
         return CPF;
     }
 
     /**
      * @param CPF the CPF to set
      */
-    public void setCPF(int CPF) {
+    public void setCPF(long CPF) {
         this.CPF = CPF;
     }
     
@@ -120,7 +126,15 @@ public class Usuario {
         this.user = user;
     }
     
-    
-       
+     public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    /**
+     * @param idUsuario the idUsuario to set
+     */
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
     
 }

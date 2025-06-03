@@ -148,7 +148,7 @@ public class TelaLogin extends javax.swing.JFrame {
             if(dao.existe(usuario)){
                 dao.carregarDados(usuario);
                 JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.getNomePerfil() + "!");
-                DashboardTela dt = new DashboardTela();
+                DashboardTela dt = new DashboardTela(usuario);
                 dt.setVisible(true);
                 this.dispose();
 

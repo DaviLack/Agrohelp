@@ -1,8 +1,26 @@
 CREATE DATABASE Agrohelp;
 use Agrohelp;
-CREATE TABLE usuario(idUsuario int auto_increment primary key, 
-email varchar(200), senha varchar(200), nomePerfil varchar(200), dataNascimento date,
-sexo char(1), CPF int, user varchar(200));
+CREATE TABLE usuario (
+    idUsuario int auto_increment primary key, 
+    email varchar(200), 
+    senha varchar(200), 
+    nomePerfil varchar(200), 
+    dataNascimento date,
+    sexo char(1), 
+    CPF long, user varchar(200)
+);
+
+INSERT INTO usuario (email, senha, nomePerfil, dataNascimento, sexo, CPF, user)
+VALUES 
+('joao.silva@email.com', 'senha123', 'João Silva', '1990-05-15', 'M', 12345678901, 'joaosilva'),
+
+('maria.souza@email.com', 'senha456', 'Maria Souza', '1985-10-20', 'F', 23456789012, 'mariasouza'),
+
+('carlos.lima@email.com', 'senha789', 'Carlos Lima', '1992-03-08', 'M', 34567890123, 'carloslima'),
+
+('ana.pereira@email.com', 'senhaabc', 'Ana Pereira', '2000-07-25', 'F', 45678901234, 'anapereira'),
+
+('lucas.martins@email.com', 'senhaxyz', 'Lucas Martins', '1995-12-30', 'M', 56789012345, 'lucasmartins');
 
 CREATE TABLE planta (
     idPlanta INT PRIMARY KEY AUTO_INCREMENT,
@@ -13,48 +31,29 @@ CREATE TABLE planta (
     condicaoColheita VARCHAR(200),
     relevoIdeial VARCHAR(200),
     climaIdeal VARCHAR(200),
-    estadoRecomendado VARCHAR(200)
+    regiaoRecomendada VARCHAR(200)
 );
 
 INSERT INTO planta (
-    nomePlanta,
-    texturaSoloIdeial,
-    tempoIrrigacao,
-    tempoColheita,
-    condicaoColheita,
-    relevoIdeial,
-    climaIdeal,
-    estadoRecomendado
-) VALUES (
-    'Soja',
-    'Média a argilosa',
-    7, 
-    120,
-    'Grãos maduros com teor de umidade de 13% a 15%',
-    'Plano a levemente ondulado',
-    'Temperaturas entre 20°C e 30°C, sem geadas',
-    'MT, PR, GO, SP'
-),
-(
-    'Milho',
-    'Solo arenoso ou franco-argiloso',
-    10, -- Intervalo de irrigação recomendado (dias)
-    120, -- Tempo de colheita em dias
-    'Grãos secos e firmes, com a casca durificada',
-    'Plano',
-    'Temperaturas entre 18°C e 30°C, com boa radiação solar',
-    'MT, GO, MS, BA'
-),
-(
-    'Tomate',
-    'Solo leve e bem drenado, com pH de 6 a 6,8',
-    5, -- Intervalo de irrigação recomendado (dias)
-    90, -- Tempo de colheita em dias
-    'Frutos firmes e de cor vermelha intensa, com pouco defeito',
-    'Plano ou levemente ondulado',
-    'Temperaturas entre 18°C e 25°C, sem geadas',
-    'SP, MG, PR'
-);
+    nomePlanta, 
+    texturaSoloIdeial, 
+    tempoIrrigacao, 
+    tempoColheita, 
+    condicaoColheita, 
+    relevoIdeial, 
+    climaIdeal, 
+    regiaoRecomendada
+)
+VALUES
+('Alface', 'Solo argiloso leve', 2, 60, 'Folhas firmes e bem desenvolvidas', 'Plano', 'Temperado', 'Sul'),
+
+('Tomate', 'Solo franco-arenoso', 3, 90, 'Frutos firmes e vermelhos', 'Suave inclinação', 'Tropical', 'Sudeste'),
+
+('Milho', 'Solo argiloso bem drenado', 1, 120, 'Espigas cheias e grãos duros', 'Plano a levemente ondulado', 'Tropical úmido', 'Centro-Oeste'),
+
+('Batata', 'Solo arenoso rico em matéria orgânica', 2, 100, 'Túberas firmes e tamanho adequado', 'Montanhoso', 'Subtropical', 'Sul'),
+
+('Cenoura', 'Solo leve e bem drenado', 2, 80, 'Raízes longas e de coloração intensa', 'Plano', 'Temperado', 'Sudeste');
 
 CREATE TABLE terreno (
     idTerreno INT PRIMARY KEY AUTO_INCREMENT,
@@ -62,9 +61,10 @@ CREATE TABLE terreno (
     areaTerreno DOUBLE,
     textura VARCHAR(200),
     relevoTerreno VARCHAR(200),
-    estadoTerreno VARCHAR(2),
+    regiaoTerreno VARCHAR(100),
     climaTerreno VARCHAR(200),
-    idUsuario INT
+    idUsuario INT,
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 
 INSERT INTO terreno (
@@ -72,34 +72,35 @@ INSERT INTO terreno (
     areaTerreno,
     textura,
     relevoTerreno,
-    estadoTerreno,
+    regiaoTerreno,
     climaTerreno,
     idUsuario
-) VALUES (
-    'Fazenda ABC',
-    250.5,
-    'Argiloso',
-    'Plano',
-    'SP',
-    'Tropical',
-    1
-),
-(
-    'Sítio Boa Esperança',
-    180.0,
-    'Franco-arenoso',
-    'Levemente ondulado',
-    'MG',
-    'Subtropical',
-    1
-),
-(
-    'Chácara Vale Verde',
-    320.75,
-    'Arenoso',
-    'Plano',
-    'GO',
-    'Tropical seco',
-    1
+)
+VALUES
+('Sítio Boa Vista', 3500.0, 'Argiloso leve', 'Plano', 'Sul', 'Temperado', 1),
+
+('Chácara São Pedro', 5200.0, 'Franco-arenoso', 'Suave inclinação', 'Sudeste', 'Tropical', 2),
+
+('Fazenda Santa Clara', 12000.0, 'Argiloso', 'Levemente ondulado', 'Centro-Oeste', 'Tropical úmido', 3),
+
+('Terreno da Serra', 2800.0, 'Arenoso', 'Montanhoso', 'Sul', 'Subtropical', 4),
+
+('Sítio Recanto Verde', 4000.0, 'Solo leve e drenado', 'Plano', 'Sudeste', 'Temperado', 5);
+
+CREATE TABLE caixa (
+    idCaixa INT PRIMARY KEY AUTO_INCREMENT,
+    idUsuario INT,
+    idTerreno INT,
+    idPlanta INT,
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (idTerreno) REFERENCES terreno(idTerreno),
+    FOREIGN KEY (idPlanta) REFERENCES planta(idPlanta)
 );
 
+INSERT INTO caixa (idUsuario, idTerreno, idPlanta)
+VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 5);

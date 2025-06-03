@@ -1,13 +1,33 @@
 package com.mycompany.agrohelp;
 
+import java.awt.Component;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 public class DashboardTela extends javax.swing.JFrame {
 
-    
-    public DashboardTela() {
-        super ("Cadastro de cursos e alunos");
+    int idUsuario;
+    int idTerreno;
+    Usuario usuario;
+
+    public DashboardTela(Usuario usuario) {
+        super("AGROHELP");
         initComponents();
+        this.usuario = usuario;
+        buscarTerrenos(usuario);
+        idUsuario = usuario.getIdUsuario();
         setLocationRelativeTo(null);
+    }
+
+    private void buscarTerrenos(Usuario usuario) {
+        try {
+            DAO dao = new DAO();
+            Terreno[] terrenos = dao.obterTerrenos(usuario);
+            selecionarTerrenoComboBox.setModel(new DefaultComboBoxModel<>(terrenos));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terrenos indisponíveis, tente novamente mais tarde.");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -19,47 +39,706 @@ public class DashboardTela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPaneMenu = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        nomeTerrenoTextField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        excluirTerrenoButton = new javax.swing.JButton();
+        areaTerrenoTextField = new javax.swing.JTextField();
+        relevoTerrenoTextField = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        selecionarTerrenoComboBox = new javax.swing.JComboBox<>();
+        adicionarTerrenoButton = new javax.swing.JButton();
+        editarTerrenoButton = new javax.swing.JButton();
+        regiaoTerrenoComboBox = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        texturaTerrenoTextField = new javax.swing.JTextField();
+        climaTerrenoTextField = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1209, 680));
+        getContentPane().setLayout(null);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dashboard Principal"));
+        jTabbedPaneMenu.setBackground(new java.awt.Color(214, 214, 196));
+        jTabbedPaneMenu.setForeground(new java.awt.Color(44, 50, 15));
+        jTabbedPaneMenu.setPreferredSize(new java.awt.Dimension(1090, 750));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(151, 150, 83));
+        jPanel1.setLayout(null);
+
+        jPanel6.setBackground(new java.awt.Color(151, 150, 83));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1210, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel6);
+        jPanel6.setBounds(0, 150, 1210, 520);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/TelaInicio.png"))); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1210, 680);
+
+        jTabbedPaneMenu.addTab("Início", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(151, 150, 83));
+        jPanel2.setLayout(null);
+
+        jPanel5.setBackground(new java.awt.Color(151, 150, 83));
+        jPanel5.setLayout(null);
+
+        jPanel12.setBackground(new java.awt.Color(214, 214, 196));
+        jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel12.setLayout(null);
+
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel14.setText("Planta 1");
+        jPanel12.add(jLabel14);
+        jLabel14.setBounds(20, 10, 160, 40);
+
+        jTextArea1.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel12.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 50, 230, 110);
+
+        jPanel5.add(jPanel12);
+        jPanel12.setBounds(50, 50, 250, 170);
+
+        jPanel13.setBackground(new java.awt.Color(214, 214, 196));
+        jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel13.setLayout(null);
+
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel15.setText("Planta 1");
+        jPanel13.add(jLabel15);
+        jLabel15.setBounds(20, 10, 160, 40);
+
+        jTextArea2.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea2.setColumns(20);
+        jTextArea2.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea2.setRows(5);
+        jTextArea2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane2.setViewportView(jTextArea2);
+
+        jPanel13.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 50, 230, 110);
+
+        jPanel5.add(jPanel13);
+        jPanel13.setBounds(310, 50, 250, 170);
+
+        jPanel14.setBackground(new java.awt.Color(214, 214, 196));
+        jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel14.setLayout(null);
+
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel16.setText("Planta 1");
+        jPanel14.add(jLabel16);
+        jLabel16.setBounds(20, 10, 160, 40);
+
+        jTextArea3.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea3.setColumns(20);
+        jTextArea3.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea3.setRows(5);
+        jTextArea3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane3.setViewportView(jTextArea3);
+
+        jPanel14.add(jScrollPane3);
+        jScrollPane3.setBounds(10, 50, 230, 110);
+
+        jPanel5.add(jPanel14);
+        jPanel14.setBounds(570, 50, 250, 170);
+
+        jPanel15.setBackground(new java.awt.Color(214, 214, 196));
+        jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel15.setLayout(null);
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel17.setText("Planta 1");
+        jPanel15.add(jLabel17);
+        jLabel17.setBounds(20, 10, 160, 40);
+
+        jTextArea4.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea4.setColumns(20);
+        jTextArea4.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea4.setRows(5);
+        jTextArea4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane4.setViewportView(jTextArea4);
+
+        jPanel15.add(jScrollPane4);
+        jScrollPane4.setBounds(10, 50, 230, 110);
+
+        jPanel5.add(jPanel15);
+        jPanel15.setBounds(840, 50, 250, 170);
+
+        jPanel16.setBackground(new java.awt.Color(214, 214, 196));
+        jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel16.setLayout(null);
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel18.setText("Planta 1");
+        jPanel16.add(jLabel18);
+        jLabel18.setBounds(20, 10, 160, 40);
+
+        jTextArea5.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea5.setColumns(20);
+        jTextArea5.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea5.setRows(5);
+        jTextArea5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane5.setViewportView(jTextArea5);
+
+        jPanel16.add(jScrollPane5);
+        jScrollPane5.setBounds(10, 50, 230, 110);
+
+        jPanel5.add(jPanel16);
+        jPanel16.setBounds(50, 250, 250, 170);
+
+        jPanel2.add(jPanel5);
+        jPanel5.setBounds(0, 150, 1210, 520);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/TelaG-Plantas.png"))); // NOI18N
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(0, 0, 1210, 680);
+
+        jTabbedPaneMenu.addTab("Gerenciamento de Plantas", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(151, 150, 83));
+        jPanel3.setLayout(null);
+
+        jPanel9.setBackground(new java.awt.Color(151, 150, 83));
+        jPanel9.setLayout(null);
+
+        jPanel11.setBackground(new java.awt.Color(214, 214, 196));
+        jPanel11.setLayout(null);
+
+        jLabel12.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel12.setText("Relevo do terreno (Adicionado automaticamente)");
+        jPanel11.add(jLabel12);
+        jLabel12.setBounds(610, 180, 280, 20);
+
+        nomeTerrenoTextField.setBackground(new java.awt.Color(151, 150, 83));
+        nomeTerrenoTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        nomeTerrenoTextField.setForeground(new java.awt.Color(44, 50, 15));
+        jPanel11.add(nomeTerrenoTextField);
+        nomeTerrenoTextField.setBounds(20, 130, 260, 40);
+
+        jLabel13.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel13.setText("Nome do Terreno");
+        jPanel11.add(jLabel13);
+        jLabel13.setBounds(20, 110, 260, 16);
+
+        excluirTerrenoButton.setBackground(new java.awt.Color(151, 150, 83));
+        excluirTerrenoButton.setForeground(new java.awt.Color(44, 50, 15));
+        excluirTerrenoButton.setText("Excluir");
+        excluirTerrenoButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        excluirTerrenoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirTerrenoButtonActionPerformed(evt);
+            }
+        });
+        jPanel11.add(excluirTerrenoButton);
+        excluirTerrenoButton.setBounds(360, 340, 150, 27);
+
+        areaTerrenoTextField.setBackground(new java.awt.Color(151, 150, 83));
+        areaTerrenoTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        areaTerrenoTextField.setForeground(new java.awt.Color(44, 50, 15));
+        jPanel11.add(areaTerrenoTextField);
+        areaTerrenoTextField.setBounds(20, 200, 260, 40);
+
+        relevoTerrenoTextField.setBackground(new java.awt.Color(151, 150, 83));
+        relevoTerrenoTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        relevoTerrenoTextField.setForeground(new java.awt.Color(44, 50, 15));
+        jPanel11.add(relevoTerrenoTextField);
+        relevoTerrenoTextField.setBounds(610, 200, 260, 40);
+
+        jLabel19.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel19.setText("Metros Quadrados do Terreno");
+        jPanel11.add(jLabel19);
+        jLabel19.setBounds(20, 180, 260, 20);
+
+        jLabel20.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel20.setText("Selecione o terreno");
+        jPanel11.add(jLabel20);
+        jLabel20.setBounds(20, 20, 260, 20);
+
+        selecionarTerrenoComboBox.setBackground(new java.awt.Color(151, 150, 83));
+        selecionarTerrenoComboBox.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        selecionarTerrenoComboBox.setForeground(new java.awt.Color(44, 50, 15));
+        selecionarTerrenoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarTerrenoComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel11.add(selecionarTerrenoComboBox);
+        selecionarTerrenoComboBox.setBounds(20, 50, 260, 40);
+
+        adicionarTerrenoButton.setBackground(new java.awt.Color(151, 150, 83));
+        adicionarTerrenoButton.setForeground(new java.awt.Color(44, 50, 15));
+        adicionarTerrenoButton.setText("Adicionar");
+        adicionarTerrenoButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        adicionarTerrenoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarTerrenoButtonActionPerformed(evt);
+            }
+        });
+        jPanel11.add(adicionarTerrenoButton);
+        adicionarTerrenoButton.setBounds(20, 340, 150, 27);
+
+        editarTerrenoButton.setBackground(new java.awt.Color(151, 150, 83));
+        editarTerrenoButton.setForeground(new java.awt.Color(44, 50, 15));
+        editarTerrenoButton.setText("Salvar Mudanças");
+        editarTerrenoButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editarTerrenoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarTerrenoButtonActionPerformed(evt);
+            }
+        });
+        jPanel11.add(editarTerrenoButton);
+        editarTerrenoButton.setBounds(190, 340, 150, 27);
+
+        regiaoTerrenoComboBox.setBackground(new java.awt.Color(151, 150, 83));
+        regiaoTerrenoComboBox.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        regiaoTerrenoComboBox.setForeground(new java.awt.Color(44, 50, 15));
+        regiaoTerrenoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul" }));
+        jPanel11.add(regiaoTerrenoComboBox);
+        regiaoTerrenoComboBox.setBounds(330, 200, 260, 40);
+
+        jLabel21.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel21.setText("Região do terreno");
+        jPanel11.add(jLabel21);
+        jLabel21.setBounds(330, 180, 260, 20);
+
+        texturaTerrenoTextField.setBackground(new java.awt.Color(151, 150, 83));
+        texturaTerrenoTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        texturaTerrenoTextField.setForeground(new java.awt.Color(44, 50, 15));
+        jPanel11.add(texturaTerrenoTextField);
+        texturaTerrenoTextField.setBounds(330, 130, 260, 40);
+
+        climaTerrenoTextField.setBackground(new java.awt.Color(151, 150, 83));
+        climaTerrenoTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        climaTerrenoTextField.setForeground(new java.awt.Color(44, 50, 15));
+        jPanel11.add(climaTerrenoTextField);
+        climaTerrenoTextField.setBounds(610, 130, 260, 40);
+
+        jLabel22.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel22.setText("Textura do solo do terreno");
+        jPanel11.add(jLabel22);
+        jLabel22.setBounds(330, 110, 260, 20);
+
+        jLabel23.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel23.setText("Clima do terreno (Adicionado automaticamente)");
+        jPanel11.add(jLabel23);
+        jLabel23.setBounds(610, 110, 280, 20);
+
+        jPanel9.add(jPanel11);
+        jPanel11.setBounds(50, 40, 930, 390);
+
+        jPanel3.add(jPanel9);
+        jPanel9.setBounds(0, 150, 1210, 520);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/TelaG-Terrenos.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(0, 0, 1210, 680);
+
+        jTabbedPaneMenu.addTab("Gerenciamento de Terrenos", jPanel3);
+
+        jPanel7.setLayout(null);
+
+        jPanel8.setBackground(new java.awt.Color(151, 150, 83));
+        jPanel8.setLayout(null);
+
+        jTextField1.setBackground(new java.awt.Color(214, 214, 196));
+        jTextField1.setForeground(new java.awt.Color(44, 50, 15));
+        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jTextField1);
+        jTextField1.setBounds(40, 80, 450, 40);
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Nome Completo");
+        jPanel8.add(jLabel5);
+        jLabel5.setBounds(50, 60, 430, 16);
+
+        jTextField2.setBackground(new java.awt.Color(214, 214, 196));
+        jTextField2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(44, 50, 15));
+        jTextField2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jTextField2);
+        jTextField2.setBounds(40, 170, 450, 40);
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Usuário");
+        jPanel8.add(jLabel6);
+        jLabel6.setBounds(50, 150, 430, 16);
+
+        jTextField3.setBackground(new java.awt.Color(214, 214, 196));
+        jTextField3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(44, 50, 15));
+        jTextField3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jTextField3);
+        jTextField3.setBounds(40, 260, 450, 40);
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("E-mail");
+        jPanel8.add(jLabel7);
+        jLabel7.setBounds(50, 240, 430, 16);
+
+        jFormattedTextField1.setBackground(new java.awt.Color(214, 214, 196));
+        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jFormattedTextField1.setForeground(new java.awt.Color(44, 50, 15));
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel8.add(jFormattedTextField1);
+        jFormattedTextField1.setBounds(590, 80, 450, 40);
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Data de Nascimento ( AAAA/MM/DD )");
+        jPanel8.add(jLabel8);
+        jLabel8.setBounds(600, 60, 440, 16);
+
+        jFormattedTextField2.setBackground(new java.awt.Color(214, 214, 196));
+        jFormattedTextField2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jFormattedTextField2.setForeground(new java.awt.Color(44, 50, 15));
+        try {
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel8.add(jFormattedTextField2);
+        jFormattedTextField2.setBounds(590, 170, 450, 40);
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("CPF");
+        jPanel8.add(jLabel9);
+        jLabel9.setBounds(600, 150, 420, 16);
+
+        jComboBox1.setBackground(new java.awt.Color(214, 214, 196));
+        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(44, 50, 15));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Prefiro Não Informar", "Feminino", "Masculino", "Outros" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel8.add(jComboBox1);
+        jComboBox1.setBounds(590, 260, 450, 40);
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Sexo");
+        jPanel8.add(jLabel10);
+        jLabel10.setBounds(600, 240, 340, 16);
+
+        jPasswordField1.setBackground(new java.awt.Color(214, 214, 196));
+        jPasswordField1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(44, 50, 15));
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel8.add(jPasswordField1);
+        jPasswordField1.setBounds(40, 350, 450, 40);
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Senha");
+        jPanel8.add(jLabel11);
+        jLabel11.setBounds(50, 330, 370, 16);
+
+        jButton1.setBackground(new java.awt.Color(214, 214, 196));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(44, 50, 15));
+        jButton1.setText("Salvar");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel8.add(jButton1);
+        jButton1.setBounds(590, 350, 180, 40);
+
+        jPanel7.add(jPanel8);
+        jPanel8.setBounds(0, 150, 1210, 530);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/TelaPerfil.png"))); // NOI18N
+        jPanel7.add(jLabel4);
+        jLabel4.setBounds(0, 0, 1210, 680);
+
+        jTabbedPaneMenu.addTab("Perfil", jPanel7);
+
+        getContentPane().add(jTabbedPaneMenu);
+        jTabbedPaneMenu.setBounds(0, 0, 1210, 700);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void selecionarTerrenoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarTerrenoComboBoxActionPerformed
+        Terreno terreno = (Terreno) selecionarTerrenoComboBox.getSelectedItem();
+        nomeTerrenoTextField.setText(terreno.getNomeTerreno());
+        areaTerrenoTextField.setText(Double.toString(terreno.getAreaTerreno()));
+        texturaTerrenoTextField.setText(terreno.getTextura());
+        relevoTerrenoTextField.setText(terreno.getRelevoTerreno());
+        climaTerrenoTextField.setText(terreno.getClimaTerreno());
+        idTerreno = terreno.getIdTerreno();
+
+        int indexRegiao = 0;
+        if (terreno.getRegiaoTerreno().equals("Norte")) {
+            indexRegiao = 1;
+        }
+        if (terreno.getRegiaoTerreno().equals("Nordeste")) {
+            indexRegiao = 2;
+        }
+        if (terreno.getRegiaoTerreno().equals("Centro-Oeste")) {
+            indexRegiao = 3;
+        }
+        if (terreno.getRegiaoTerreno().equals("Sudeste")) {
+            indexRegiao = 4;
+        }
+        if (terreno.getRegiaoTerreno().equals("Sul")) {
+            indexRegiao = 5;
+        }
+        regiaoTerrenoComboBox.setSelectedIndex(indexRegiao);
+    }//GEN-LAST:event_selecionarTerrenoComboBoxActionPerformed
+
+    private void adicionarTerrenoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarTerrenoButtonActionPerformed
+        String nomeTerreno = nomeTerrenoTextField.getText();
+        String areaText = areaTerrenoTextField.getText();
+        String textura = texturaTerrenoTextField.getText();
+        int indexRegiaoTerreno = regiaoTerrenoComboBox.getSelectedIndex();
+        String regiaoTerreno;
+        String relevoTerreno = relevoTerrenoTextField.getText();
+        String climaTerreno = climaTerrenoTextField.getText();
+
+        if (indexRegiaoTerreno == 5) {
+            regiaoTerreno = "Sul";
+            climaTerreno = "Subtropical";
+            relevoTerreno = "Montanhoso";
+        } else if (indexRegiaoTerreno == 4) {
+            regiaoTerreno = "Sudeste";
+            climaTerreno = "Temperado";
+            relevoTerreno = "Suave inclinação";
+        } else if (indexRegiaoTerreno == 3) {
+            regiaoTerreno = "Centro-Oeste";
+            climaTerreno = "Tropical úmido";
+            relevoTerreno = "Plano a levemente ondulado";
+        } else if (indexRegiaoTerreno == 1) {
+            regiaoTerreno = "Norte";
+            climaTerreno = "Equatorial";
+            relevoTerreno = "Planalto florestado";
+        } else if (indexRegiaoTerreno == 2) {
+            regiaoTerreno = "Nordeste";
+            climaTerreno = "Semiárido";
+            relevoTerreno = "Chapadas e depressões";
+        } else {
+            regiaoTerreno = "Indefinido";
+            climaTerreno = "Indefinido";
+            relevoTerreno = "Desconhecido";
+        }
+
+        if (nomeTerreno == null || nomeTerreno.isEmpty()
+                || areaText == null || areaText.isEmpty()
+                || textura == null || textura.isEmpty()
+                || relevoTerreno == null || relevoTerreno.isEmpty()
+                || indexRegiaoTerreno == 0
+                || climaTerreno == null || climaTerreno.isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos do terreno");
+
+        } else {
+            try {
+                double areaTerreno = Double.parseDouble(areaText);
+
+                int escolha = JOptionPane.showConfirmDialog(null, "Confirmar cadastro de novo terreno?");
+                if (escolha == JOptionPane.YES_OPTION) {
+                    Terreno terreno = new Terreno(999, nomeTerreno, areaTerreno, textura, relevoTerreno, regiaoTerreno, climaTerreno, idUsuario);
+                    DAO dao = new DAO();
+                    dao.inserirTerreno(terreno);
+
+                    JOptionPane.showMessageDialog(null, "Terreno cadastrado com sucesso");
+
+                    nomeTerrenoTextField.setText("");
+                    areaTerrenoTextField.setText("");
+                    texturaTerrenoTextField.setText("");
+                    relevoTerrenoTextField.setText("");
+                    regiaoTerrenoComboBox.setSelectedIndex(0);
+                    climaTerrenoTextField.setText("");
+
+                    buscarTerrenos(usuario);
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Área e ID do usuário devem ser numéricos");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Falha técnica, tente mais tarde");
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_adicionarTerrenoButtonActionPerformed
+
+    private void editarTerrenoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTerrenoButtonActionPerformed
+        int escolha = JOptionPane.showConfirmDialog(null, "Atualizar terreno?");
+        if (escolha == JOptionPane.YES_OPTION) {
+            try {
+
+                String nome = nomeTerrenoTextField.getText();
+                double area = Double.parseDouble(areaTerrenoTextField.getText());
+                String textura = texturaTerrenoTextField.getText();
+                String relevo = relevoTerrenoTextField.getText();
+                String regiao = regiaoTerrenoComboBox.getSelectedItem().toString();
+                String clima = climaTerrenoTextField.getText();
+
+                Terreno terreno = new Terreno(idTerreno, nome, area, textura, relevo, regiao, clima, idUsuario);
+                DAO dao = new DAO();
+                dao.atualizarTerreno(terreno);
+
+                JOptionPane.showMessageDialog(null, "Terreno atualizado com sucesso");
+
+                dao.obterTerrenos(usuario);
+
+                nomeTerrenoTextField.setText("");
+                areaTerrenoTextField.setText("");
+                texturaTerrenoTextField.setText("");
+                relevoTerrenoTextField.setText("");
+                regiaoTerrenoComboBox.setSelectedIndex(0);
+                climaTerrenoTextField.setText("");
+                
+                buscarTerrenos(usuario);
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "ID, Área e ID do Usuário devem ser numéricos.");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Falha técnica. Tente novamente mais tarde.");
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_editarTerrenoButtonActionPerformed
+
+    private void excluirTerrenoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirTerrenoButtonActionPerformed
+        int escolha = JOptionPane.showConfirmDialog(null, "Remover terreno?");
+        if (escolha == JOptionPane.YES_OPTION) {
+            try {
+
+                // Você pode usar dados fictícios para os outros campos, já que só o ID será usado
+                Terreno terreno = new Terreno(idTerreno, "deletado", 0.0, "deletado", "deletado", "deletado", "deletado", 0);
+
+                DAO dao = new DAO();
+                dao.removerTerreno(terreno);
+
+                JOptionPane.showMessageDialog(null, "Terreno removido com sucesso!");
+
+                dao.obterTerrenos(usuario);
+
+                
+                nomeTerrenoTextField.setText("");
+                areaTerrenoTextField.setText("");
+                texturaTerrenoTextField.setText("");
+                relevoTerrenoTextField.setText("");
+                regiaoTerrenoComboBox.setSelectedIndex(0);
+                climaTerrenoTextField.setText("");
+                buscarTerrenos(usuario);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Falha técnica. Tente novamente mais tarde.");
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_excluirTerrenoButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(Usuario usuario) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -87,12 +766,77 @@ public class DashboardTela extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardTela().setVisible(true);
+                new DashboardTela(usuario).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adicionarTerrenoButton;
+    private javax.swing.JTextField areaTerrenoTextField;
+    private javax.swing.JTextField climaTerrenoTextField;
+    private javax.swing.JButton editarTerrenoButton;
+    private javax.swing.JButton excluirTerrenoButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTabbedPane jTabbedPaneMenu;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField nomeTerrenoTextField;
+    private javax.swing.JComboBox<String> regiaoTerrenoComboBox;
+    private javax.swing.JTextField relevoTerrenoTextField;
+    private javax.swing.JComboBox<Terreno> selecionarTerrenoComboBox;
+    private javax.swing.JTextField texturaTerrenoTextField;
     // End of variables declaration//GEN-END:variables
 }

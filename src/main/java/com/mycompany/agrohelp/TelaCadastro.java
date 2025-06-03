@@ -16,7 +16,7 @@ public class TelaCadastro extends javax.swing.JFrame {
      * Creates new form TelaCadastro
      */
     public TelaCadastro() {
-        super ("AgroHelp");
+        super("AgroHelp");
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -33,9 +33,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         nomePerfilTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        CPFTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        dataNascimentoTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         emailTextField = new javax.swing.JTextField();
         sexoComboBox = new javax.swing.JComboBox<>();
@@ -46,6 +44,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         senhaPasswordField = new javax.swing.JPasswordField();
+        dataNascimentoTextField = new javax.swing.JFormattedTextField();
+        cpfTextField = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,7 +56,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(214, 214, 196));
         jLabel1.setText("Nome Completo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(110, 80, 100, 16);
+        jLabel1.setBounds(110, 80, 240, 16);
 
         nomePerfilTextField.setBackground(new java.awt.Color(214, 214, 196));
         nomePerfilTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
@@ -74,38 +74,19 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(214, 214, 196));
         jLabel2.setText("CPF");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(110, 140, 20, 16);
-
-        CPFTextField.setBackground(new java.awt.Color(214, 214, 196));
-        CPFTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        CPFTextField.setForeground(new java.awt.Color(44, 50, 15));
-        CPFTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(CPFTextField);
-        CPFTextField.setBounds(110, 160, 280, 30);
+        jLabel2.setBounds(110, 140, 140, 16);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(214, 214, 196));
-        jLabel3.setText("Data de Nascimento");
+        jLabel3.setText("Data de Nascimento ( AAAA/MM/DD )");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(110, 200, 120, 16);
-
-        dataNascimentoTextField.setBackground(new java.awt.Color(214, 214, 196));
-        dataNascimentoTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        dataNascimentoTextField.setForeground(new java.awt.Color(44, 50, 15));
-        dataNascimentoTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        dataNascimentoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataNascimentoTextFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(dataNascimentoTextField);
-        dataNascimentoTextField.setBounds(110, 220, 280, 30);
+        jLabel3.setBounds(110, 200, 240, 16);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(214, 214, 196));
         jLabel4.setText("E-mail");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(110, 320, 60, 16);
+        jLabel4.setBounds(110, 320, 180, 16);
 
         emailTextField.setBackground(new java.awt.Color(214, 214, 196));
         emailTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
@@ -163,12 +144,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(214, 214, 196));
         jLabel7.setText("Usuário");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(110, 380, 60, 16);
+        jLabel7.setBounds(110, 380, 220, 16);
 
         jLabel8.setForeground(new java.awt.Color(214, 214, 196));
         jLabel8.setText("Senha");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(110, 440, 32, 16);
+        jLabel8.setBounds(110, 440, 270, 16);
 
         senhaPasswordField.setBackground(new java.awt.Color(214, 214, 196));
         senhaPasswordField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
@@ -182,16 +163,39 @@ public class TelaCadastro extends javax.swing.JFrame {
         getContentPane().add(senhaPasswordField);
         senhaPasswordField.setBounds(110, 460, 280, 30);
 
+        dataNascimentoTextField.setBackground(new java.awt.Color(214, 214, 196));
+        dataNascimentoTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        dataNascimentoTextField.setForeground(new java.awt.Color(44, 50, 15));
+        try {
+            dataNascimentoTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        dataNascimentoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataNascimentoTextFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(dataNascimentoTextField);
+        dataNascimentoTextField.setBounds(110, 220, 280, 30);
+
+        cpfTextField.setBackground(new java.awt.Color(214, 214, 196));
+        cpfTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cpfTextField.setForeground(new java.awt.Color(44, 50, 15));
+        try {
+            cpfTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(cpfTextField);
+        cpfTextField.setBounds(110, 156, 280, 30);
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/background2.2.png"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 520, 700);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void dataNascimentoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataNascimentoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataNascimentoTextFieldActionPerformed
 
     private void nomePerfilTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomePerfilTextFieldActionPerformed
         // TODO add your handling code here:
@@ -205,54 +209,48 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        
+
         String login = userTextField.getText();
         String senha = new String(senhaPasswordField.getPassword());
         String nomePerfil = nomePerfilTextField.getText();
         String email = emailTextField.getText();
-        int dataNascimento = Integer.parseInt(dataNascimentoTextField.getText());
-        int CPF = Integer.parseInt(CPFTextField.getText());
+        int dataNascimento = Integer.parseInt((dataNascimentoTextField.getText()).replace("/", ""));
+        long CPF = Long.parseLong((cpfTextField.getText()).replace(".", "").replace("-", ""));
         int sexoOpcao = sexoComboBox.getSelectedIndex();
         char sexo;
-        if(sexoOpcao == 0){
+        if (sexoOpcao == 0) {
             sexo = 'N';
-        }
-        else if (sexoOpcao == 1){
+        } else if (sexoOpcao == 1) {
             sexo = 'F';
-        }
-        else if (sexoOpcao == 2){
+        } else if (sexoOpcao == 2) {
             sexo = 'M';
-        }
-        else{
+        } else {
             sexo = 'O';
         }
-        
-        try{
-            Usuario usuario = new Usuario(login,senha);
+
+        try {
+            Usuario usuario = new Usuario(login, senha);
             DAO dao = new DAO();
             usuario.setEmail(email);
             usuario.setNomePerfil(nomePerfil);
             usuario.setDataNascimento(dataNascimento);
             usuario.setCPF(CPF);
             usuario.setSexo(sexo);
-            
-            if(dao.existe(usuario)){
+
+            if (dao.existe(usuario)) {
                 JOptionPane.showMessageDialog(null, "Usuário já cadastrado!");
-            }
-            
-            else if(dao.existe(usuario) == false){
+            } else if (dao.existe(usuario) == false) {
                 dao.cadastrar(usuario);
+                dao.carregarDados(usuario);
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
                 JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.getNomePerfil() + "!");
-                DashboardTela dt = new DashboardTela();
+                DashboardTela dt = new DashboardTela(usuario);
                 dt.setVisible(true);
                 this.dispose();
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuário inválido");
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
             e.printStackTrace();
         }
@@ -265,6 +263,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void sexoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoComboBoxActionPerformed
+
+    private void dataNascimentoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataNascimentoTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataNascimentoTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,8 +304,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CPFTextField;
-    private javax.swing.JTextField dataNascimentoTextField;
+    private javax.swing.JFormattedTextField cpfTextField;
+    private javax.swing.JFormattedTextField dataNascimentoTextField;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
