@@ -1,6 +1,8 @@
 package com.mycompany.agrohelp;
 
 import java.awt.Component;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -15,6 +17,7 @@ public class DashboardTela extends javax.swing.JFrame {
         initComponents();
         this.usuario = usuario;
         buscarTerrenos(usuario);
+        carregarUsuario(usuario);
         idUsuario = usuario.getIdUsuario();
         setLocationRelativeTo(null);
     }
@@ -28,6 +31,25 @@ public class DashboardTela extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Terrenos indisponíveis, tente novamente mais tarde.");
             e.printStackTrace();
         }
+    }
+
+    private void carregarUsuario(Usuario usuario) {
+        nomeTextField.setText(usuario.getNomePerfil());
+        emailTextField.setText(usuario.getEmail());
+        senhaPasswordField.setText(usuario.getSenha());
+        dataNascimentoFormattedTextField.setText(String.valueOf(usuario.getDataNascimento()));
+        cpfFormattedTextField.setText(String.valueOf(usuario.getCPF()));
+        userTextField.setText(usuario.getUser());
+        if (usuario.getSexo() == 'N') {
+            sexoComboBox.setSelectedIndex(0);
+        } else if (usuario.getSexo() == 'F') {
+            sexoComboBox.setSelectedIndex(1);
+        } else if (usuario.getSexo() == 'M') {
+            sexoComboBox.setSelectedIndex(2);
+        } else {
+            sexoComboBox.setSelectedIndex(3);
+        }
+
     }
 
     /**
@@ -89,21 +111,23 @@ public class DashboardTela extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        nomeTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        userTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        emailTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        dataNascimentoFormattedTextField = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        cpfFormattedTextField = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        sexoComboBox = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        senhaPasswordField = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        excluirButton = new javax.swing.JButton();
+        salvarButton = new javax.swing.JButton();
+        recarregarButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -415,16 +439,16 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(151, 150, 83));
         jPanel8.setLayout(null);
 
-        jTextField1.setBackground(new java.awt.Color(214, 214, 196));
-        jTextField1.setForeground(new java.awt.Color(44, 50, 15));
-        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nomeTextField.setBackground(new java.awt.Color(214, 214, 196));
+        nomeTextField.setForeground(new java.awt.Color(44, 50, 15));
+        nomeTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nomeTextFieldActionPerformed(evt);
             }
         });
-        jPanel8.add(jTextField1);
-        jTextField1.setBounds(40, 80, 450, 40);
+        jPanel8.add(nomeTextField);
+        nomeTextField.setBounds(40, 80, 450, 40);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -432,17 +456,17 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel8.add(jLabel5);
         jLabel5.setBounds(50, 60, 430, 16);
 
-        jTextField2.setBackground(new java.awt.Color(214, 214, 196));
-        jTextField2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(44, 50, 15));
-        jTextField2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        userTextField.setBackground(new java.awt.Color(214, 214, 196));
+        userTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        userTextField.setForeground(new java.awt.Color(44, 50, 15));
+        userTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        userTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                userTextFieldActionPerformed(evt);
             }
         });
-        jPanel8.add(jTextField2);
-        jTextField2.setBounds(40, 170, 450, 40);
+        jPanel8.add(userTextField);
+        userTextField.setBounds(40, 170, 450, 40);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -450,17 +474,17 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel8.add(jLabel6);
         jLabel6.setBounds(50, 150, 430, 16);
 
-        jTextField3.setBackground(new java.awt.Color(214, 214, 196));
-        jTextField3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(44, 50, 15));
-        jTextField3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        emailTextField.setBackground(new java.awt.Color(214, 214, 196));
+        emailTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        emailTextField.setForeground(new java.awt.Color(44, 50, 15));
+        emailTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                emailTextFieldActionPerformed(evt);
             }
         });
-        jPanel8.add(jTextField3);
-        jTextField3.setBounds(40, 260, 450, 40);
+        jPanel8.add(emailTextField);
+        emailTextField.setBounds(40, 260, 450, 40);
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -468,16 +492,16 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel8.add(jLabel7);
         jLabel7.setBounds(50, 240, 430, 16);
 
-        jFormattedTextField1.setBackground(new java.awt.Color(214, 214, 196));
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jFormattedTextField1.setForeground(new java.awt.Color(44, 50, 15));
+        dataNascimentoFormattedTextField.setBackground(new java.awt.Color(214, 214, 196));
+        dataNascimentoFormattedTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        dataNascimentoFormattedTextField.setForeground(new java.awt.Color(44, 50, 15));
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
+            dataNascimentoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel8.add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(590, 80, 450, 40);
+        jPanel8.add(dataNascimentoFormattedTextField);
+        dataNascimentoFormattedTextField.setBounds(590, 80, 450, 40);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -485,16 +509,16 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel8.add(jLabel8);
         jLabel8.setBounds(600, 60, 440, 16);
 
-        jFormattedTextField2.setBackground(new java.awt.Color(214, 214, 196));
-        jFormattedTextField2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jFormattedTextField2.setForeground(new java.awt.Color(44, 50, 15));
+        cpfFormattedTextField.setBackground(new java.awt.Color(214, 214, 196));
+        cpfFormattedTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cpfFormattedTextField.setForeground(new java.awt.Color(44, 50, 15));
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            cpfFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel8.add(jFormattedTextField2);
-        jFormattedTextField2.setBounds(590, 170, 450, 40);
+        jPanel8.add(cpfFormattedTextField);
+        cpfFormattedTextField.setBounds(590, 170, 450, 40);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -502,13 +526,18 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel8.add(jLabel9);
         jLabel9.setBounds(600, 150, 420, 16);
 
-        jComboBox1.setBackground(new java.awt.Color(214, 214, 196));
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(44, 50, 15));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Prefiro Não Informar", "Feminino", "Masculino", "Outros" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel8.add(jComboBox1);
-        jComboBox1.setBounds(590, 260, 450, 40);
+        sexoComboBox.setBackground(new java.awt.Color(214, 214, 196));
+        sexoComboBox.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        sexoComboBox.setForeground(new java.awt.Color(44, 50, 15));
+        sexoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Prefiro Não Informar", "Feminino", "Masculino", "Outros" }));
+        sexoComboBox.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sexoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sexoComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel8.add(sexoComboBox);
+        sexoComboBox.setBounds(590, 260, 450, 40);
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -516,12 +545,12 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel8.add(jLabel10);
         jLabel10.setBounds(600, 240, 340, 16);
 
-        jPasswordField1.setBackground(new java.awt.Color(214, 214, 196));
-        jPasswordField1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(44, 50, 15));
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel8.add(jPasswordField1);
-        jPasswordField1.setBounds(40, 350, 450, 40);
+        senhaPasswordField.setBackground(new java.awt.Color(214, 214, 196));
+        senhaPasswordField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        senhaPasswordField.setForeground(new java.awt.Color(44, 50, 15));
+        senhaPasswordField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel8.add(senhaPasswordField);
+        senhaPasswordField.setBounds(40, 350, 450, 40);
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -529,13 +558,44 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel8.add(jLabel11);
         jLabel11.setBounds(50, 330, 370, 16);
 
-        jButton1.setBackground(new java.awt.Color(214, 214, 196));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(44, 50, 15));
-        jButton1.setText("Salvar");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel8.add(jButton1);
-        jButton1.setBounds(590, 350, 180, 40);
+        excluirButton.setBackground(new java.awt.Color(214, 214, 196));
+        excluirButton.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        excluirButton.setForeground(new java.awt.Color(44, 50, 15));
+        excluirButton.setText("Excluir");
+        excluirButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        excluirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirButtonActionPerformed(evt);
+            }
+        });
+        jPanel8.add(excluirButton);
+        excluirButton.setBounds(890, 350, 150, 40);
+
+        salvarButton.setBackground(new java.awt.Color(214, 214, 196));
+        salvarButton.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        salvarButton.setForeground(new java.awt.Color(44, 50, 15));
+        salvarButton.setText("Salvar");
+        salvarButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        salvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarButtonActionPerformed(evt);
+            }
+        });
+        jPanel8.add(salvarButton);
+        salvarButton.setBounds(590, 350, 140, 40);
+
+        recarregarButton.setBackground(new java.awt.Color(214, 214, 196));
+        recarregarButton.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        recarregarButton.setForeground(new java.awt.Color(44, 50, 15));
+        recarregarButton.setText("Recarregar dados");
+        recarregarButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        recarregarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recarregarButtonActionPerformed(evt);
+            }
+        });
+        jPanel8.add(recarregarButton);
+        recarregarButton.setBounds(740, 350, 140, 40);
 
         jPanel7.add(jPanel8);
         jPanel8.setBounds(0, 150, 1210, 530);
@@ -552,17 +612,17 @@ public class DashboardTela extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nomeTextFieldActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_emailTextFieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_userTextFieldActionPerformed
 
     private void selecionarTerrenoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarTerrenoComboBoxActionPerformed
         Terreno terreno = (Terreno) selecionarTerrenoComboBox.getSelectedItem();
@@ -692,7 +752,7 @@ public class DashboardTela extends javax.swing.JFrame {
                 relevoTerrenoTextField.setText("");
                 regiaoTerrenoComboBox.setSelectedIndex(0);
                 climaTerrenoTextField.setText("");
-                
+
                 buscarTerrenos(usuario);
 
             } catch (NumberFormatException e) {
@@ -719,7 +779,6 @@ public class DashboardTela extends javax.swing.JFrame {
 
                 dao.obterTerrenos(usuario);
 
-                
                 nomeTerrenoTextField.setText("");
                 areaTerrenoTextField.setText("");
                 texturaTerrenoTextField.setText("");
@@ -735,6 +794,63 @@ public class DashboardTela extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_excluirTerrenoButtonActionPerformed
 
+    private void sexoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sexoComboBoxActionPerformed
+
+    private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
+        int escolha = JOptionPane.showConfirmDialog(null, "Remover usuario?");
+        if (escolha == JOptionPane.YES_OPTION) {
+            DAO dao = new DAO();
+            try {
+                dao.removerUsuario(usuario);
+                JOptionPane.showMessageDialog(null, "Usuario removido com sucesso");
+                TelaLogin login = new TelaLogin();
+                login.setVisible(true);
+                this.dispose();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Falha técnica. Tente novamente mais tarde.");
+                e.printStackTrace();
+            }
+        }
+
+    }//GEN-LAST:event_excluirButtonActionPerformed
+
+    private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
+        int escolha = JOptionPane.showConfirmDialog(null, "Alterar dados?");
+        if (escolha == JOptionPane.YES_OPTION) {
+            DAO dao = new DAO();
+            try {
+                usuario.setNomePerfil(nomeTextField.getText());
+                usuario.setEmail(emailTextField.getText());
+                usuario.setSenha(new String(senhaPasswordField.getPassword()));
+                usuario.setDataNascimento(Integer.parseInt((dataNascimentoFormattedTextField.getText()).replace("/", "")));
+                usuario.setCPF(Long.parseLong((cpfFormattedTextField.getText()).replace(".", "").replace("-", "")));
+                usuario.setUser(userTextField.getText());
+                if (sexoComboBox.getSelectedIndex() == 0) {
+                    usuario.setSexo('N');
+                } else if (sexoComboBox.getSelectedIndex() == 1) {
+                    usuario.setSexo('F');
+                } else if (sexoComboBox.getSelectedIndex() == 2) {
+                    usuario.setSexo('M');
+                } else {
+                    usuario.setSexo('O');
+                }
+
+                dao.atualizarUsuario(usuario);
+                carregarUsuario(usuario);
+                JOptionPane.showMessageDialog(null, "Usuario atualizado com sucesso");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Falha técnica. Tente novamente mais tarde.");
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_salvarButtonActionPerformed
+
+    private void recarregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recarregarButtonActionPerformed
+        carregarUsuario(usuario);
+    }//GEN-LAST:event_recarregarButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -749,16 +865,24 @@ public class DashboardTela extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashboardTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardTela.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashboardTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardTela.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashboardTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardTela.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashboardTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardTela.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -775,12 +899,12 @@ public class DashboardTela extends javax.swing.JFrame {
     private javax.swing.JButton adicionarTerrenoButton;
     private javax.swing.JTextField areaTerrenoTextField;
     private javax.swing.JTextField climaTerrenoTextField;
+    private javax.swing.JFormattedTextField cpfFormattedTextField;
+    private javax.swing.JFormattedTextField dataNascimentoFormattedTextField;
     private javax.swing.JButton editarTerrenoButton;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JButton excluirButton;
     private javax.swing.JButton excluirTerrenoButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -818,7 +942,6 @@ public class DashboardTela extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -830,13 +953,16 @@ public class DashboardTela extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField nomeTerrenoTextField;
+    private javax.swing.JTextField nomeTextField;
+    private javax.swing.JButton recarregarButton;
     private javax.swing.JComboBox<String> regiaoTerrenoComboBox;
     private javax.swing.JTextField relevoTerrenoTextField;
+    private javax.swing.JButton salvarButton;
     private javax.swing.JComboBox<Terreno> selecionarTerrenoComboBox;
+    private javax.swing.JPasswordField senhaPasswordField;
+    private javax.swing.JComboBox<String> sexoComboBox;
     private javax.swing.JTextField texturaTerrenoTextField;
+    private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables
 }
