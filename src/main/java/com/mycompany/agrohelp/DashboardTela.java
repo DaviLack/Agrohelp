@@ -11,6 +11,10 @@ public class DashboardTela extends javax.swing.JFrame {
     int idUsuario;
     int idTerreno;
     Usuario usuario;
+    Terreno terreno;
+    Terreno[] terrenos;
+    Planta planta;
+    Planta[] plantas;
 
     public DashboardTela(Usuario usuario) {
         super("AGROHELP");
@@ -19,14 +23,29 @@ public class DashboardTela extends javax.swing.JFrame {
         buscarTerrenos(usuario);
         BuscarPlanta(usuario);
         carregarUsuario(usuario);
+        carregarTerrenoCard();
         idUsuario = usuario.getIdUsuario();
         setLocationRelativeTo(null);
     }
-
+    private void carregarTerrenoCard() {
+            if(plantas.length < 2 || terrenos.length < 2) {
+                nomeTerrenoCard1.setText("Sem terreno");
+                nomePlantaCard1.setText("Sem plantas cadastradas");
+            }
+            else{
+            terreno = terrenos[1];
+            planta = plantas[1];
+            nomeTerrenoCard1.setText(terreno.getNomeTerreno());
+            nomePlantaCard1.setText(planta.getNomePlanta());
+            irrigacaoCard1.setText("Irrigação a cada "+Integer.toString(planta.getTempoIrrigacao())+" dias");
+            tempoColheitaCard1.setText("Colha após "+Integer.toString(planta.getTempoColheita())+" dias");
+            condicaoColheitaCard1.setText("ou quando "+(planta.getCondicaoColheita()));
+            }
+}
     private void buscarTerrenos(Usuario usuario) {
         try {
             DAO dao = new DAO();
-            Terreno[] terrenos = dao.obterTerrenos(usuario);
+            terrenos = dao.obterTerrenos(usuario);
             selecionarTerrenoComboBox.setModel(new DefaultComboBoxModel<>(terrenos));
             SelecionarTerrenoPlanta3.setModel(new DefaultComboBoxModel<>(terrenos));
         } catch (Exception e) {
@@ -38,7 +57,7 @@ public class DashboardTela extends javax.swing.JFrame {
         private void BuscarPlanta(Usuario usuario) {
         try {
             DAO dao = new DAO();
-            Planta[] plantas = dao.obterPlantas(usuario);
+            plantas = dao.obterPlantas(usuario);
             SelecionarTerrenoPlanta2.setModel(new DefaultComboBoxModel<>(plantas));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Terrenos indisponíveis, tente novamente mais tarde.");
@@ -77,6 +96,12 @@ public class DashboardTela extends javax.swing.JFrame {
         jTabbedPaneMenu = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        condicaoColheitaCard1 = new javax.swing.JLabel();
+        tempoColheitaCard1 = new javax.swing.JLabel();
+        irrigacaoCard1 = new javax.swing.JLabel();
+        nomePlantaCard1 = new javax.swing.JLabel();
+        nomeTerrenoCard1 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -150,17 +175,22 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jPanel6.setBackground(new java.awt.Color(151, 150, 83));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.add(condicaoColheitaCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 260, 20));
+        jPanel6.add(tempoColheitaCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 260, 20));
+        jPanel6.add(irrigacaoCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 260, 20));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1210, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
-        );
+        nomePlantaCard1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomePlantaCard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(nomePlantaCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 200, 30));
+
+        nomeTerrenoCard1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        nomeTerrenoCard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(nomeTerrenoCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 250, 40));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cardTerreno.png"))); // NOI18N
+        jLabel14.setText("jLabel14");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 320, 440));
 
         jPanel1.add(jPanel6);
         jPanel6.setBounds(0, 150, 1210, 520);
@@ -730,6 +760,7 @@ public class DashboardTela extends javax.swing.JFrame {
                     climaTerrenoTextField.setText("");
 
                     buscarTerrenos(usuario);
+                    carregarTerrenoCard();
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Área e ID do usuário devem ser numéricos");
@@ -768,6 +799,7 @@ public class DashboardTela extends javax.swing.JFrame {
                 climaTerrenoTextField.setText("");
 
                 buscarTerrenos(usuario);
+                carregarTerrenoCard();
 
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "ID, Área e ID do Usuário devem ser numéricos.");
@@ -913,6 +945,7 @@ public class DashboardTela extends javax.swing.JFrame {
             dao.adicionarNaCaixa(usuario.getIdUsuario(), terreno.getIdTerreno(), planta.getIdPlanta());
 
             JOptionPane.showMessageDialog(null, "Planta adicionada com sucesso à caixa!");
+            carregarTerrenoCard();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar à caixa: " + ex.getMessage());
             ex.printStackTrace();
@@ -978,17 +1011,20 @@ public class DashboardTela extends javax.swing.JFrame {
     private javax.swing.JButton adicionarTerrenoButton;
     private javax.swing.JTextField areaTerrenoTextField;
     private javax.swing.JTextField climaTerrenoTextField;
+    private javax.swing.JLabel condicaoColheitaCard1;
     private javax.swing.JFormattedTextField cpfFormattedTextField;
     private javax.swing.JFormattedTextField dataNascimentoFormattedTextField;
     private javax.swing.JButton editarTerrenoButton;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JButton excluirButton;
     private javax.swing.JButton excluirTerrenoButton;
+    private javax.swing.JLabel irrigacaoCard1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -1016,6 +1052,8 @@ public class DashboardTela extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPaneMenu;
+    private javax.swing.JLabel nomePlantaCard1;
+    private javax.swing.JLabel nomeTerrenoCard1;
     private javax.swing.JTextField nomeTerrenoTextField;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JButton recarregarButton;
@@ -1025,6 +1063,7 @@ public class DashboardTela extends javax.swing.JFrame {
     private javax.swing.JComboBox<Terreno> selecionarTerrenoComboBox;
     private javax.swing.JPasswordField senhaPasswordField;
     private javax.swing.JComboBox<String> sexoComboBox;
+    private javax.swing.JLabel tempoColheitaCard1;
     private javax.swing.JTextField texturaTerrenoTextField;
     private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables

@@ -9,7 +9,7 @@ public class ConexaoBD{
     private static String porta = "3306";
     private static String db = "agrohelp";
     private static String usuario = "root";
-    private static String senha = "mestredor8";
+    private static String senha = "1301";
 
     public static Connection obterConexao() throws Exception {
         String url = String.format(
