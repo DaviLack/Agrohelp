@@ -14,7 +14,7 @@ public class DashboardTela extends javax.swing.JFrame {
     Terreno terreno;
     Terreno[] terrenos;
     Planta planta;
-    Planta[] plantas;
+    Planta[] plantas, plantasUsuario;
 
     public DashboardTela(Usuario usuario) {
         super("AGROHELP");
@@ -22,26 +22,37 @@ public class DashboardTela extends javax.swing.JFrame {
         this.usuario = usuario;
         buscarTerrenos(usuario);
         BuscarPlanta(usuario);
+        BuscarPlantaUsuario(usuario);
         carregarUsuario(usuario);
         carregarTerrenoCard();
         idUsuario = usuario.getIdUsuario();
         setLocationRelativeTo(null);
     }
+
     private void carregarTerrenoCard() {
-            if(plantas.length < 2 || terrenos.length < 2) {
-                nomeTerrenoCard1.setText("Sem terreno");
-                nomePlantaCard1.setText("Sem plantas cadastradas");
-            }
-            else{
+        BuscarPlantaUsuario(usuario);
+
+        if (terrenos.length < 2) {
+            nomeTerrenoCard1.setText("Sem terreno");
+            nomePlantaCard1.setText("Sem plantas cadastradas");
+            irrigacaoCard1.setText("");
+            tempoColheitaCard1.setText("");
+            condicaoColheitaCard1.setText("");
+        } else if (plantasUsuario.length < 2) {
+            nomePlantaCard1.setText("Sem plantas cadastradas");
             terreno = terrenos[1];
-            planta = plantas[1];
+            nomeTerrenoCard1.setText(terreno.getNomeTerreno());
+        } else {
+            terreno = terrenos[1];
+            planta = plantasUsuario[1];
             nomeTerrenoCard1.setText(terreno.getNomeTerreno());
             nomePlantaCard1.setText(planta.getNomePlanta());
-            irrigacaoCard1.setText("Irrigação a cada "+Integer.toString(planta.getTempoIrrigacao())+" dias");
-            tempoColheitaCard1.setText("Colha após "+Integer.toString(planta.getTempoColheita())+" dias");
-            condicaoColheitaCard1.setText("ou quando "+(planta.getCondicaoColheita()));
-            }
-}
+            irrigacaoCard1.setText("Irrigação a cada " + Integer.toString(planta.getTempoIrrigacao()) + " dias");
+            tempoColheitaCard1.setText("Colha após " + Integer.toString(planta.getTempoColheita()) + " dias");
+            condicaoColheitaCard1.setText("ou quando " + (planta.getCondicaoColheita()));
+        }
+    }
+
     private void buscarTerrenos(Usuario usuario) {
         try {
             DAO dao = new DAO();
@@ -53,14 +64,24 @@ public class DashboardTela extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-   
-        private void BuscarPlanta(Usuario usuario) {
+
+    private void BuscarPlanta(Usuario usuario) {
         try {
             DAO dao = new DAO();
             plantas = dao.obterPlantas(usuario);
             SelecionarTerrenoPlanta2.setModel(new DefaultComboBoxModel<>(plantas));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Terrenos indisponíveis, tente novamente mais tarde.");
+            JOptionPane.showMessageDialog(null, "Plantas indisponíveis, tente novamente mais tarde.");
+            e.printStackTrace();
+        }
+    }
+
+    private void BuscarPlantaUsuario(Usuario usuario) {
+        try {
+            DAO dao = new DAO();
+            plantasUsuario = dao.obterPlantasUsuario(usuario);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Plantas indisponíveis, tente novamente mais tarde.");
             e.printStackTrace();
         }
     }
@@ -114,6 +135,14 @@ public class DashboardTela extends javax.swing.JFrame {
         ClimaIdeal = new javax.swing.JTextField();
         CondicaoColheita = new javax.swing.JTextField();
         RegiaoRecomendada = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         SelecionarTerrenoPlanta2 = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
@@ -214,68 +243,105 @@ public class DashboardTela extends javax.swing.JFrame {
         SoloIdeal.setBackground(new java.awt.Color(151, 150, 83));
         SoloIdeal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         SoloIdeal.setForeground(new java.awt.Color(44, 50, 15));
-        SoloIdeal.setText("Solo Ideal");
         SoloIdeal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SoloIdealActionPerformed(evt);
             }
         });
         jPanel12.add(SoloIdeal);
-        SoloIdeal.setBounds(600, 170, 280, 120);
+        SoloIdeal.setBounds(600, 170, 280, 90);
 
         TempoIrrigacao.setBackground(new java.awt.Color(151, 150, 83));
         TempoIrrigacao.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         TempoIrrigacao.setForeground(new java.awt.Color(44, 50, 15));
-        TempoIrrigacao.setText("Irrigação");
         TempoIrrigacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TempoIrrigacaoActionPerformed(evt);
             }
         });
         jPanel12.add(TempoIrrigacao);
-        TempoIrrigacao.setBounds(20, 170, 280, 120);
+        TempoIrrigacao.setBounds(20, 310, 280, 90);
 
         TempoColheita.setBackground(new java.awt.Color(151, 150, 83));
         TempoColheita.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         TempoColheita.setForeground(new java.awt.Color(44, 50, 15));
-        TempoColheita.setText("Tempo Colheita");
         jPanel12.add(TempoColheita);
-        TempoColheita.setBounds(20, 300, 280, 120);
+        TempoColheita.setBounds(20, 170, 280, 90);
 
         NomePlanta.setBackground(new java.awt.Color(151, 150, 83));
         NomePlanta.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         NomePlanta.setForeground(new java.awt.Color(44, 50, 15));
-        NomePlanta.setText("Nome");
+        NomePlanta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NomePlantaActionPerformed(evt);
+            }
+        });
         jPanel12.add(NomePlanta);
-        NomePlanta.setBounds(20, 40, 280, 120);
+        NomePlanta.setBounds(20, 40, 280, 90);
 
         RelevoIdeal.setBackground(new java.awt.Color(151, 150, 83));
         RelevoIdeal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         RelevoIdeal.setForeground(new java.awt.Color(44, 50, 15));
-        RelevoIdeal.setText("Relevo Ideal");
         jPanel12.add(RelevoIdeal);
-        RelevoIdeal.setBounds(310, 170, 280, 120);
+        RelevoIdeal.setBounds(310, 170, 280, 90);
 
         ClimaIdeal.setBackground(new java.awt.Color(151, 150, 83));
         ClimaIdeal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         ClimaIdeal.setForeground(new java.awt.Color(44, 50, 15));
-        ClimaIdeal.setText("Clima Ideal");
         jPanel12.add(ClimaIdeal);
-        ClimaIdeal.setBounds(310, 300, 280, 120);
+        ClimaIdeal.setBounds(310, 310, 280, 90);
 
         CondicaoColheita.setBackground(new java.awt.Color(151, 150, 83));
         CondicaoColheita.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         CondicaoColheita.setForeground(new java.awt.Color(44, 50, 15));
-        CondicaoColheita.setText("Condição Colheita");
         jPanel12.add(CondicaoColheita);
-        CondicaoColheita.setBounds(310, 40, 280, 120);
+        CondicaoColheita.setBounds(310, 40, 280, 90);
 
         RegiaoRecomendada.setBackground(new java.awt.Color(151, 150, 83));
         RegiaoRecomendada.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         RegiaoRecomendada.setForeground(new java.awt.Color(44, 50, 15));
-        RegiaoRecomendada.setText("Região Recomendada");
         jPanel12.add(RegiaoRecomendada);
-        RegiaoRecomendada.setBounds(600, 40, 280, 120);
+        RegiaoRecomendada.setBounds(600, 40, 280, 90);
+
+        jLabel28.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel28.setText("Solo Ideal");
+        jPanel12.add(jLabel28);
+        jLabel28.setBounds(600, 140, 120, 20);
+
+        jLabel29.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel29.setText("Nome da Planta");
+        jPanel12.add(jLabel29);
+        jLabel29.setBounds(20, 10, 120, 20);
+
+        jLabel30.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel30.setText("Tempo de Colheita");
+        jPanel12.add(jLabel30);
+        jLabel30.setBounds(20, 140, 120, 20);
+
+        jLabel31.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel31.setText("Tempo de Irrigação");
+        jPanel12.add(jLabel31);
+        jLabel31.setBounds(20, 280, 120, 20);
+
+        jLabel32.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel32.setText("Clima ideal");
+        jPanel12.add(jLabel32);
+        jLabel32.setBounds(310, 280, 120, 20);
+
+        jLabel33.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel33.setText("Relevo Ideal");
+        jPanel12.add(jLabel33);
+        jLabel33.setBounds(310, 140, 120, 20);
+
+        jLabel34.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel34.setText("Condição Colheita");
+        jPanel12.add(jLabel34);
+        jLabel34.setBounds(310, 10, 120, 20);
+
+        jLabel35.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel35.setText("Regiao Recomendada");
+        jPanel12.add(jLabel35);
+        jLabel35.setBounds(600, 10, 120, 20);
 
         jPanel5.add(jPanel12);
         jPanel12.setBounds(300, 20, 900, 450);
@@ -832,6 +898,7 @@ public class DashboardTela extends javax.swing.JFrame {
                 regiaoTerrenoComboBox.setSelectedIndex(0);
                 climaTerrenoTextField.setText("");
                 buscarTerrenos(usuario);
+                carregarTerrenoCard();
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Falha técnica. Tente novamente mais tarde.");
@@ -937,10 +1004,10 @@ public class DashboardTela extends javax.swing.JFrame {
 
     private void AdicionarTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarTotalActionPerformed
         try {
- 
+
             Planta planta = (Planta) SelecionarTerrenoPlanta2.getSelectedItem();
             Terreno terreno = (Terreno) SelecionarTerrenoPlanta3.getSelectedItem();
-            
+
             DAO dao = new DAO();
             dao.adicionarNaCaixa(usuario.getIdUsuario(), terreno.getIdTerreno(), planta.getIdPlanta());
 
@@ -951,6 +1018,10 @@ public class DashboardTela extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_AdicionarTotalActionPerformed
+
+    private void NomePlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomePlantaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NomePlantaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1033,7 +1104,15 @@ public class DashboardTela extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
