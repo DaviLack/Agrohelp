@@ -1,2 +1,2 @@
 # Agrohelp
-Sistema de gerenciamento de plantas
+Sistema de gerenciamento básico de plantas e terrenos utilizando Java e MySQL
