@@ -11,41 +11,35 @@ public class DashboardTela extends javax.swing.JFrame {
     int idUsuario;
     int idTerreno;
     Usuario usuario;
+    Terreno terreno;
+    Terreno[] terrenos;
+    
 
     public DashboardTela(Usuario usuario) {
         super("AGROHELP");
         initComponents();
         this.usuario = usuario;
         buscarTerrenos(usuario);
-        BuscarPlanta(usuario);
         carregarUsuario(usuario);
         idUsuario = usuario.getIdUsuario();
         setLocationRelativeTo(null);
+        carregarTerrenoCard();
     }
 
     private void buscarTerrenos(Usuario usuario) {
         try {
             DAO dao = new DAO();
-            Terreno[] terrenos = dao.obterTerrenos(usuario);
+            terrenos = dao.obterTerrenos(usuario);
             selecionarTerrenoComboBox.setModel(new DefaultComboBoxModel<>(terrenos));
-            SelecionarTerrenoPlanta3.setModel(new DefaultComboBoxModel<>(terrenos));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Terrenos indisponíveis, tente novamente mais tarde.");
             e.printStackTrace();
         }
     }
-   
-        private void BuscarPlanta(Usuario usuario) {
-        try {
-            DAO dao = new DAO();
-            Planta[] plantas = dao.obterPlantas(usuario);
-            SelecionarTerrenoPlanta2.setModel(new DefaultComboBoxModel<>(plantas));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Terrenos indisponíveis, tente novamente mais tarde.");
-            e.printStackTrace();
-        }
-    }
-
+    private void carregarTerrenoCard() {
+            terreno = terrenos[1];
+            nomeTerrenoCard1.setText(terreno.getNomeTerreno());  
+}
     private void carregarUsuario(Usuario usuario) {
         nomeTextField.setText(usuario.getNomePerfil());
         emailTextField.setText(usuario.getEmail());
@@ -77,24 +71,47 @@ public class DashboardTela extends javax.swing.JFrame {
         jTabbedPaneMenu = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        nomeTerrenoCard1 = new javax.swing.JLabel();
+        nomePlantaCard1 = new javax.swing.JLabel();
+        irrigacaoPlantaCard1 = new javax.swing.JLabel();
+        condicaoColheitaCard1 = new javax.swing.JLabel();
+        nomeTerrenoCard2 = new javax.swing.JLabel();
+        nomeTerrenoCard3 = new javax.swing.JLabel();
+        dataColheitaCard1 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        nomePlantaCard2 = new javax.swing.JLabel();
+        nomePlantaCard3 = new javax.swing.JLabel();
+        irrigacaoPlantaCard2 = new javax.swing.JLabel();
+        irrigacaoPlantaCard3 = new javax.swing.JLabel();
+        dataColheitaCard2 = new javax.swing.JLabel();
+        dataColheitaCard3 = new javax.swing.JLabel();
+        condicaoColheitaCard2 = new javax.swing.JLabel();
+        condicaoColheitaCard3 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
-        SoloIdeal = new javax.swing.JTextField();
-        TempoIrrigacao = new javax.swing.JTextField();
-        TempoColheita = new javax.swing.JTextField();
-        NomePlanta = new javax.swing.JTextField();
-        RelevoIdeal = new javax.swing.JTextField();
-        ClimaIdeal = new javax.swing.JTextField();
-        CondicaoColheita = new javax.swing.JTextField();
-        RegiaoRecomendada = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel13 = new javax.swing.JPanel();
-        SelecionarTerrenoPlanta2 = new javax.swing.JComboBox<>();
-        jLabel26 = new javax.swing.JLabel();
-        SelecionarTerrenoPlanta3 = new javax.swing.JComboBox<>();
-        jLabel27 = new javax.swing.JLabel();
-        AdicionarTotal = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -150,20 +167,73 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jPanel6.setBackground(new java.awt.Color(151, 150, 83));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1210, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
-        );
+        nomeTerrenoCard1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        nomeTerrenoCard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(nomeTerrenoCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 240, 50));
+
+        nomePlantaCard1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nomePlantaCard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(nomePlantaCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 200, 40));
+
+        irrigacaoPlantaCard1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel6.add(irrigacaoPlantaCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 260, 20));
+
+        condicaoColheitaCard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(condicaoColheitaCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 260, 20));
+
+        nomeTerrenoCard2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        nomeTerrenoCard2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(nomeTerrenoCard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 260, 40));
+
+        nomeTerrenoCard3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        nomeTerrenoCard3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(nomeTerrenoCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 60, 260, 40));
+
+        dataColheitaCard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(dataColheitaCard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 260, 20));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cardTerreno.png"))); // NOI18N
+        jLabel25.setText("jLabel25");
+        jPanel6.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 320, 440));
+
+        nomePlantaCard2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nomePlantaCard2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(nomePlantaCard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 106, 200, 40));
+
+        nomePlantaCard3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nomePlantaCard3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(nomePlantaCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 200, 40));
+
+        irrigacaoPlantaCard2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel6.add(irrigacaoPlantaCard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 260, 20));
+
+        irrigacaoPlantaCard3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel6.add(irrigacaoPlantaCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 150, 260, 20));
+
+        dataColheitaCard2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel6.add(dataColheitaCard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 260, 20));
+
+        dataColheitaCard3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel6.add(dataColheitaCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 170, 260, 20));
+
+        condicaoColheitaCard2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel6.add(condicaoColheitaCard2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 260, 20));
+
+        condicaoColheitaCard3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel6.add(condicaoColheitaCard3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, 260, 20));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cardTerreno.png"))); // NOI18N
+        jLabel24.setText("jLabel24");
+        jPanel6.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 320, 440));
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cardTerreno.png"))); // NOI18N
+        jLabel26.setText("jLabel26");
+        jPanel6.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, 320, 440));
 
         jPanel1.add(jPanel6);
-        jPanel6.setBounds(0, 150, 1210, 520);
+        jPanel6.setBounds(0, 120, 1210, 540);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/TelaInicio.png"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -181,122 +251,116 @@ public class DashboardTela extends javax.swing.JFrame {
         jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel12.setLayout(null);
 
-        SoloIdeal.setBackground(new java.awt.Color(151, 150, 83));
-        SoloIdeal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        SoloIdeal.setForeground(new java.awt.Color(44, 50, 15));
-        SoloIdeal.setText("Solo Ideal");
-        SoloIdeal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SoloIdealActionPerformed(evt);
-            }
-        });
-        jPanel12.add(SoloIdeal);
-        SoloIdeal.setBounds(600, 170, 280, 120);
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel14.setText("Planta 1");
+        jPanel12.add(jLabel14);
+        jLabel14.setBounds(20, 10, 160, 40);
 
-        TempoIrrigacao.setBackground(new java.awt.Color(151, 150, 83));
-        TempoIrrigacao.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        TempoIrrigacao.setForeground(new java.awt.Color(44, 50, 15));
-        TempoIrrigacao.setText("Irrigação");
-        TempoIrrigacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TempoIrrigacaoActionPerformed(evt);
-            }
-        });
-        jPanel12.add(TempoIrrigacao);
-        TempoIrrigacao.setBounds(20, 170, 280, 120);
+        jTextArea1.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane1.setViewportView(jTextArea1);
 
-        TempoColheita.setBackground(new java.awt.Color(151, 150, 83));
-        TempoColheita.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        TempoColheita.setForeground(new java.awt.Color(44, 50, 15));
-        TempoColheita.setText("Tempo Colheita");
-        jPanel12.add(TempoColheita);
-        TempoColheita.setBounds(20, 300, 280, 120);
-
-        NomePlanta.setBackground(new java.awt.Color(151, 150, 83));
-        NomePlanta.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        NomePlanta.setForeground(new java.awt.Color(44, 50, 15));
-        NomePlanta.setText("Nome");
-        jPanel12.add(NomePlanta);
-        NomePlanta.setBounds(20, 40, 280, 120);
-
-        RelevoIdeal.setBackground(new java.awt.Color(151, 150, 83));
-        RelevoIdeal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        RelevoIdeal.setForeground(new java.awt.Color(44, 50, 15));
-        RelevoIdeal.setText("Relevo Ideal");
-        jPanel12.add(RelevoIdeal);
-        RelevoIdeal.setBounds(310, 170, 280, 120);
-
-        ClimaIdeal.setBackground(new java.awt.Color(151, 150, 83));
-        ClimaIdeal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        ClimaIdeal.setForeground(new java.awt.Color(44, 50, 15));
-        ClimaIdeal.setText("Clima Ideal");
-        jPanel12.add(ClimaIdeal);
-        ClimaIdeal.setBounds(310, 300, 280, 120);
-
-        CondicaoColheita.setBackground(new java.awt.Color(151, 150, 83));
-        CondicaoColheita.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        CondicaoColheita.setForeground(new java.awt.Color(44, 50, 15));
-        CondicaoColheita.setText("Condição Colheita");
-        jPanel12.add(CondicaoColheita);
-        CondicaoColheita.setBounds(310, 40, 280, 120);
-
-        RegiaoRecomendada.setBackground(new java.awt.Color(151, 150, 83));
-        RegiaoRecomendada.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        RegiaoRecomendada.setForeground(new java.awt.Color(44, 50, 15));
-        RegiaoRecomendada.setText("Região Recomendada");
-        jPanel12.add(RegiaoRecomendada);
-        RegiaoRecomendada.setBounds(600, 40, 280, 120);
+        jPanel12.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 50, 230, 110);
 
         jPanel5.add(jPanel12);
-        jPanel12.setBounds(300, 20, 900, 450);
+        jPanel12.setBounds(50, 50, 250, 170);
 
         jPanel13.setBackground(new java.awt.Color(214, 214, 196));
         jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel13.setLayout(null);
 
-        SelecionarTerrenoPlanta2.setBackground(new java.awt.Color(151, 150, 83));
-        SelecionarTerrenoPlanta2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        SelecionarTerrenoPlanta2.setForeground(new java.awt.Color(44, 50, 15));
-        SelecionarTerrenoPlanta2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SelecionarTerrenoPlanta2ActionPerformed(evt);
-            }
-        });
-        jPanel13.add(SelecionarTerrenoPlanta2);
-        SelecionarTerrenoPlanta2.setBounds(10, 120, 230, 30);
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel15.setText("Planta 1");
+        jPanel13.add(jLabel15);
+        jLabel15.setBounds(20, 10, 160, 40);
 
-        jLabel26.setForeground(new java.awt.Color(44, 50, 15));
-        jLabel26.setText("Selecione a Planta");
-        jPanel13.add(jLabel26);
-        jLabel26.setBounds(10, 90, 120, 20);
+        jTextArea2.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea2.setColumns(20);
+        jTextArea2.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea2.setRows(5);
+        jTextArea2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane2.setViewportView(jTextArea2);
 
-        SelecionarTerrenoPlanta3.setBackground(new java.awt.Color(151, 150, 83));
-        SelecionarTerrenoPlanta3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        SelecionarTerrenoPlanta3.setForeground(new java.awt.Color(44, 50, 15));
-        SelecionarTerrenoPlanta3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SelecionarTerrenoPlanta3ActionPerformed(evt);
-            }
-        });
-        jPanel13.add(SelecionarTerrenoPlanta3);
-        SelecionarTerrenoPlanta3.setBounds(10, 40, 230, 30);
-
-        jLabel27.setForeground(new java.awt.Color(44, 50, 15));
-        jLabel27.setText("Selecione o Terreno");
-        jPanel13.add(jLabel27);
-        jLabel27.setBounds(10, 10, 120, 20);
-
-        AdicionarTotal.setText("Adicionar");
-        AdicionarTotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdicionarTotalActionPerformed(evt);
-            }
-        });
-        jPanel13.add(AdicionarTotal);
-        AdicionarTotal.setBounds(10, 190, 100, 23);
+        jPanel13.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 50, 230, 110);
 
         jPanel5.add(jPanel13);
-        jPanel13.setBounds(20, 20, 270, 230);
+        jPanel13.setBounds(310, 50, 250, 170);
+
+        jPanel14.setBackground(new java.awt.Color(214, 214, 196));
+        jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel14.setLayout(null);
+
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel16.setText("Planta 1");
+        jPanel14.add(jLabel16);
+        jLabel16.setBounds(20, 10, 160, 40);
+
+        jTextArea3.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea3.setColumns(20);
+        jTextArea3.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea3.setRows(5);
+        jTextArea3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane3.setViewportView(jTextArea3);
+
+        jPanel14.add(jScrollPane3);
+        jScrollPane3.setBounds(10, 50, 230, 110);
+
+        jPanel5.add(jPanel14);
+        jPanel14.setBounds(570, 50, 250, 170);
+
+        jPanel15.setBackground(new java.awt.Color(214, 214, 196));
+        jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel15.setLayout(null);
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel17.setText("Planta 1");
+        jPanel15.add(jLabel17);
+        jLabel17.setBounds(20, 10, 160, 40);
+
+        jTextArea4.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea4.setColumns(20);
+        jTextArea4.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea4.setRows(5);
+        jTextArea4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane4.setViewportView(jTextArea4);
+
+        jPanel15.add(jScrollPane4);
+        jScrollPane4.setBounds(10, 50, 230, 110);
+
+        jPanel5.add(jPanel15);
+        jPanel15.setBounds(840, 50, 250, 170);
+
+        jPanel16.setBackground(new java.awt.Color(214, 214, 196));
+        jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel16.setLayout(null);
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(44, 50, 15));
+        jLabel18.setText("Planta 1");
+        jPanel16.add(jLabel18);
+        jLabel18.setBounds(20, 10, 160, 40);
+
+        jTextArea5.setBackground(new java.awt.Color(151, 150, 83));
+        jTextArea5.setColumns(20);
+        jTextArea5.setForeground(new java.awt.Color(44, 50, 15));
+        jTextArea5.setRows(5);
+        jTextArea5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane5.setViewportView(jTextArea5);
+
+        jPanel16.add(jScrollPane5);
+        jScrollPane5.setBounds(10, 50, 230, 110);
+
+        jPanel5.add(jPanel16);
+        jPanel16.setBounds(50, 250, 250, 170);
 
         jPanel2.add(jPanel5);
         jPanel5.setBounds(0, 150, 1210, 520);
@@ -324,6 +388,11 @@ public class DashboardTela extends javax.swing.JFrame {
         nomeTerrenoTextField.setBackground(new java.awt.Color(151, 150, 83));
         nomeTerrenoTextField.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         nomeTerrenoTextField.setForeground(new java.awt.Color(44, 50, 15));
+        nomeTerrenoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeTerrenoTextFieldActionPerformed(evt);
+            }
+        });
         jPanel11.add(nomeTerrenoTextField);
         nomeTerrenoTextField.setBounds(20, 130, 260, 40);
 
@@ -531,6 +600,11 @@ public class DashboardTela extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        cpfFormattedTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpfFormattedTextFieldActionPerformed(evt);
+            }
+        });
         jPanel8.add(cpfFormattedTextField);
         cpfFormattedTextField.setBounds(590, 170, 450, 40);
 
@@ -865,59 +939,13 @@ public class DashboardTela extends javax.swing.JFrame {
         carregarUsuario(usuario);
     }//GEN-LAST:event_recarregarButtonActionPerformed
 
-    private void SelecionarTerrenoPlanta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecionarTerrenoPlanta2ActionPerformed
-        Planta planta = (Planta) SelecionarTerrenoPlanta2.getSelectedItem();
-        NomePlanta.setText(planta.getNomePlanta());
-        SoloIdeal.setText(planta.getTexturaSoloIdeial());
-        TempoIrrigacao.setText(Integer.toString(planta.getTempoIrrigacao()));
-        TempoColheita.setText(Integer.toString(planta.getTempoColheita()));
-        CondicaoColheita.setText(planta.getCondicaoColheita());
-        RelevoIdeal.setText(planta.getRelevoIdeial());
-        ClimaIdeal.setText(planta.getClimaIdeal());
-
-        int indexRegiao = 0;
-        switch (planta.getRegiaoRecomendada()) {
-            case "Norte" ->
-                indexRegiao = 1;
-            case "Nordeste" ->
-                indexRegiao = 2;
-            case "Centro-Oeste" ->
-                indexRegiao = 3;
-            case "Sudeste" ->
-                indexRegiao = 4;
-            case "Sul" ->
-                indexRegiao = 5;
-        }
-        RegiaoRecomendada.setText(planta.getRegiaoRecomendada());        // TODO add your handling code here:
-    }//GEN-LAST:event_SelecionarTerrenoPlanta2ActionPerformed
-
-    private void SelecionarTerrenoPlanta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecionarTerrenoPlanta3ActionPerformed
+    private void nomeTerrenoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTerrenoTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SelecionarTerrenoPlanta3ActionPerformed
+    }//GEN-LAST:event_nomeTerrenoTextFieldActionPerformed
 
-    private void SoloIdealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SoloIdealActionPerformed
+    private void cpfFormattedTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfFormattedTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SoloIdealActionPerformed
-
-    private void TempoIrrigacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TempoIrrigacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TempoIrrigacaoActionPerformed
-
-    private void AdicionarTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarTotalActionPerformed
-        try {
- 
-            Planta planta = (Planta) SelecionarTerrenoPlanta2.getSelectedItem();
-            Terreno terreno = (Terreno) SelecionarTerrenoPlanta3.getSelectedItem();
-            
-            DAO dao = new DAO();
-            dao.adicionarNaCaixa(usuario.getIdUsuario(), terreno.getIdTerreno(), planta.getIdPlanta());
-
-            JOptionPane.showMessageDialog(null, "Planta adicionada com sucesso à caixa!");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao adicionar à caixa: " + ex.getMessage());
-            ex.printStackTrace();
-        }
-    }//GEN-LAST:event_AdicionarTotalActionPerformed
+    }//GEN-LAST:event_cpfFormattedTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -964,39 +992,43 @@ public class DashboardTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AdicionarTotal;
-    private javax.swing.JTextField ClimaIdeal;
-    private javax.swing.JTextField CondicaoColheita;
-    private javax.swing.JTextField NomePlanta;
-    private javax.swing.JTextField RegiaoRecomendada;
-    private javax.swing.JTextField RelevoIdeal;
-    private javax.swing.JComboBox<Planta> SelecionarTerrenoPlanta2;
-    private javax.swing.JComboBox<Terreno> SelecionarTerrenoPlanta3;
-    private javax.swing.JTextField SoloIdeal;
-    private javax.swing.JTextField TempoColheita;
-    private javax.swing.JTextField TempoIrrigacao;
     private javax.swing.JButton adicionarTerrenoButton;
     private javax.swing.JTextField areaTerrenoTextField;
     private javax.swing.JTextField climaTerrenoTextField;
+    private javax.swing.JLabel condicaoColheitaCard1;
+    private javax.swing.JLabel condicaoColheitaCard2;
+    private javax.swing.JLabel condicaoColheitaCard3;
     private javax.swing.JFormattedTextField cpfFormattedTextField;
+    private javax.swing.JLabel dataColheitaCard1;
+    private javax.swing.JLabel dataColheitaCard2;
+    private javax.swing.JLabel dataColheitaCard3;
     private javax.swing.JFormattedTextField dataNascimentoFormattedTextField;
     private javax.swing.JButton editarTerrenoButton;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JButton excluirButton;
     private javax.swing.JButton excluirTerrenoButton;
+    private javax.swing.JLabel irrigacaoPlantaCard1;
+    private javax.swing.JLabel irrigacaoPlantaCard2;
+    private javax.swing.JLabel irrigacaoPlantaCard3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1008,6 +1040,9 @@ public class DashboardTela extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
@@ -1015,7 +1050,23 @@ public class DashboardTela extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPaneMenu;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JLabel nomePlantaCard1;
+    private javax.swing.JLabel nomePlantaCard2;
+    private javax.swing.JLabel nomePlantaCard3;
+    private javax.swing.JLabel nomeTerrenoCard1;
+    private javax.swing.JLabel nomeTerrenoCard2;
+    private javax.swing.JLabel nomeTerrenoCard3;
     private javax.swing.JTextField nomeTerrenoTextField;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JButton recarregarButton;
