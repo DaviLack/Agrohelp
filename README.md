@@ -1,2 +1,2 @@
 # Agrohelp
-Projeto A3 PCO Faculdade
+Sistema de gerenciamento de plantas
