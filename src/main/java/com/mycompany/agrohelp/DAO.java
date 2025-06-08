@@ -47,6 +47,8 @@ public class DAO {
         }
 
     }
+    
+    
 
     public boolean cadastrar(Usuario usuario) throws Exception {
         String sql = "INSERT INTO usuario(email, senha, nomePerfil, dataNascimento, sexo, CPF, user) VALUES (?,?,?,?,?,?,?)";
@@ -167,4 +169,61 @@ public class DAO {
         }
     }
 
+    public Planta[] obterPlantas(Usuario usuario) throws Exception {
+    String sql = """
+        SELECT * 
+        FROM planta 
+    """;
+
+    try (
+        java.sql.Connection conn = ConexaoBD.obterConexao();
+        java.sql.PreparedStatement ps = conn.prepareStatement(
+            sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY
+        )
+    ) {
+       
+        ResultSet rs = ps.executeQuery();
+
+        int totalDePlantas = rs.last() ? rs.getRow() : 0;
+        Planta[] plantas = new Planta[totalDePlantas + 1]; // Inclui "Adicionar Planta"
+        rs.beforeFirst();
+
+        int contador = 0;
+        plantas[contador++] = new Planta(0, "Adicionar Planta", "", 0, 0, "", "", "", "");
+
+        while (rs.next()) {
+            int idPlanta = rs.getInt("idPlanta");
+            String nomePlanta = rs.getString("nomePlanta");
+            String texturaSoloIdeial = rs.getString("texturaSoloIdeial");
+            int tempoIrrigacao = rs.getInt("tempoIrrigacao");
+            int tempoColheita = rs.getInt("tempoColheita");
+            String condicaoColheita = rs.getString("condicaoColheita");
+            String relevoIdeial = rs.getString("relevoIdeial");
+            String climaIdeal = rs.getString("climaIdeal");
+            String regiaoRecomendada = rs.getString("regiaoRecomendada");
+
+            plantas[contador++] = new Planta(idPlanta, nomePlanta, texturaSoloIdeial, tempoIrrigacao, tempoColheita,
+                                             condicaoColheita, relevoIdeial, climaIdeal, regiaoRecomendada);
+        }
+        return plantas;
+    }
 }
+    public void adicionarNaCaixa(int idUsuario, int idTerreno, int idPlanta) throws Exception {
+        String sql="INSERT INTO caixa (idUsuario, idTerreno, idPlanta) VALUES (?,?,?)";
+        
+        try(
+                java.sql.Connection conn= ConexaoBD.obterConexao();
+                java.sql.PreparedStatement ps=conn.prepareStatement(sql);
+                ){
+                    ps.setInt(1, idUsuario);
+                    ps.setInt(2, idTerreno);
+                    ps.setInt(3, idPlanta);
+                    ps.executeUpdate();
+                    }
+        }
+            
+    
+}
+
+
+
